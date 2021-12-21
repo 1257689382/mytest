@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd ">
+
+    <!--上传文件的大小配置-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>5242880</value>
+        </property>
+    </bean>
+
+    <!--视图解析器配置-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--mvc注解驱动  转json，处理日期-->
+    <mvc:annotation-driven/>
+    <!--扫描controller包-->
+    <context:component-scan base-package="cn.ty.controller"></context:component-scan>
+
+    <!--配置Springmvc的拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/><!--用于指定对拦截的 url-->
+            <mvc:exclude-mapping path="#"/><!--指定哪些不拦截-->
+            <bean id="interceptordemo1" class="cn.ty.interceptors.HandlerInterceptorDemo1"/>
+        </mvc:interceptor>
+
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>&lt;!&ndash;用于指定对拦截的 url&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="#"/>&lt;!&ndash;指定哪些不拦截&ndash;&gt;-->
+<!--            <bean id="interceptordemo2" class="cn.ty.interceptors.HandlerInterceptorDemo2"/>-->
+<!--        </mvc:interceptor>-->
+    </mvc:interceptors>
+
+</beans>

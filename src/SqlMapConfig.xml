@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置别名 注意：如果有properties配置，放在properties后面，不然报错 -->
+    <typeAliases>
+        <!--        <typeAlias type="cn.ty.pojo.User" alias="user"/>-->   <!--不写具体的别名配置，默认把pojo包下面的Bean类的类名首字母小写作为 别名-->
+        <package name="cn.ty.pojo"/>
+
+    </typeAliases>
+
+
+</configuration>
