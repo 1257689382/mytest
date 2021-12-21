@@ -68,7 +68,8 @@ public class NewsController {
         newsService.delete(id);
         
         return "redirect: findAll.action";
+
     }
-    
+
   
 }
