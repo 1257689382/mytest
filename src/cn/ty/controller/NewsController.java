@@ -66,9 +66,9 @@ public class NewsController {
    @RequestMapping("/todelete")
     public  String todelete(int id){
         newsService.delete(id);
-
+        
         return "redirect: findAll.action";
     }
     
-   1234
+  
 }
