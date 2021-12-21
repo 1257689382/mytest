@@ -69,4 +69,6 @@ public class NewsController {
 
         return "redirect: findAll.action";
     }
+    
+   1234
 }
